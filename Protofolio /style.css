@@ -1,0 +1,1680 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  
+  margin: 0;
+  background-color: #16131F;
+  color: #F0D9E4;
+  
+  font-family: 'Space Mono', monospace;
+  position: relative;
+  transition: background 0.4s ease, color 0.3s ease;
+}
+
+/* ── Menu Button ── */
+.menubtn {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  font-size: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  color: #16131F;
+}
+
+/* ── Overlay Menu ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: 0.7s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+.overlay-menu a {
+  color: white;
+  font-size: 28px;
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 2px;
+  transition: 0.2s ease;
+}
+
+.overlay-menu a:hover {
+  color: #e84040;
+  transform: scale(1.08);
+}
+
+
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  display: flex;
+  
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: rgb(40, 30, 60 ,0.50);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #16131F;
+  z-index: 999;
+  transition: background 0.4s ease;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-brand {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: #F0D9E4;
+  text-decoration: none;
+}
+
+/* move menubtn inside navbar */
+.menubtn {
+  position: static;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #F0D9E4;
+  z-index: 1001;
+  line-height: 1;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* ── Hero Section ── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px 40px;
+  width: 100%;
+  background: #16131F;
+  max-width: 700px;
+}
+
+
+.hero-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #C1A0AC;
+  margin-bottom: 12px;
+  width: auto;
+  padding: 0;
+}
+
+h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(52px, 15vw, 100px);
+  letter-spacing: 6px;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-style: normal;
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  padding: 0;
+  width: auto;
+}
+
+
+.hero-desc {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(12px, 3vw, 15px);
+  line-height: 2;
+  color: #cccccc;
+  text-align: justify;
+  width: 90%;
+  max-width: 580px;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── TMI Grid ── */
+.tmi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 30px 20px 50px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.tmi-card {
+  background: rgba(20, 10, 12, 0.75);
+  border: 1px solid #F0D9E4;
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: 0.3s ease;
+}
+
+.tmi-card:hover {
+  border-color: #AA4F60;
+  background:#04001ae7 ;
+  transform: translateY(-2px);
+}
+
+.tmi-num {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(10px, 8vw, 52px);
+  color: #C1A0AC;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.tmi-title {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(13px, 3vw, 16px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 4px;
+}
+
+.tmi-desc {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(10px, 2.5vw, 12px);
+  color: #aaaaaa;
+  line-height: 1.7;
+  margin-top: 2px;
+}
+/* ── Projects Section ── */
+
+.projects-section {
+  width: 100%;
+  
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  background:#271e37;
+  gap: 70px;
+}
+
+
+/* ── Section Heading ── */
+
+.projects-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #e84040;
+  margin-bottom: 10px;
+}
+
+.projects-heading h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(52px, 12vw, 90px);
+  letter-spacing: 5px;
+  color: #ffffff;
+  line-height: 0.9;
+  margin-bottom: 25px;
+}
+
+.section-desc {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #aaaaaa;
+}
+
+
+/* ── Project Card ── */
+
+.project-card {
+  width: 100%;
+  background: rgba(20, 10, 12, 0.75);
+  border: 1px solid #4A3F4B;
+  border-radius: 22px;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: #AA4F60;
+  transform: translateY(-4px);
+}
+
+
+/* ── Gallery ── */
+
+.project-gallery {
+  position: relative;
+  width: 100%;
+  background: #0f0c14;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.project-slide {
+  min-width: 100%;
+  aspect-ratio: 16 / 10;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.project-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: fit;
+  display: block;
+}
+
+
+/* ── Gallery Buttons ── */
+
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(240, 217, 228, 0.5);
+  background: rgba(22, 19, 31, 0.75);
+  backdrop-filter: blur(8px);
+  color: #F0D9E4;
+  font-family: 'Space Mono', monospace;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 5;
+}
+
+.gallery-btn:hover {
+  background: #AA4F60;
+  border-color: #F0D9E4;
+}
+
+.gallery-prev {
+  left: 15px;
+}
+
+.gallery-next {
+  right: 15px;
+}
+
+
+/* ── Gallery Dots ── */
+
+.gallery-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 20px;
+  background: rgba(22, 19, 31, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.gallery-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #777;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.gallery-dot.active {
+  width: 20px;
+  border-radius: 10px;
+  background: #F0D9E4;
+}
+
+
+/* ── Project Information ── */
+
+.project-info {
+  padding: 30px;
+}
+
+.project-number {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #AA4F60;
+  margin-bottom: 8px;
+}
+
+.project-info h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(30px, 7vw, 48px);
+  letter-spacing: 2px;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.project-type {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #C1A0AC;
+  margin-bottom: 18px;
+}
+
+.project-description {
+  max-width: 650px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #aaaaaa;
+  margin-bottom: 20px;
+}
+
+
+/* ── Project Tags ── */
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.project-tags span {
+  padding: 6px 10px;
+  border: 1px solid #4A3F4B;
+  border-radius: 6px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: #C1A0AC;
+}
+/* =========================
+   PROJECT LINK
+========================= */
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 24px;
+  padding: 11px 20px;
+
+  border: 1px solid #E0D8DB;
+  border-radius: 999px;
+
+  color: #cc89a6;
+  background: #16131F;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.project-link:hover {
+  background-color: #F0D9E4;
+  color: #AA4F60;
+  transform: translateY(-2px);
+}
+
+.project-link:active {
+  transform: translateY(0);
+}
+
+
+/* ── Mobile ── */
+
+@media (max-width: 600px) {
+
+  .projects-section {
+    padding: 80px 14px;
+    gap: 45px;
+  }
+
+  .project-info {
+    padding: 22px;
+  }
+
+  .gallery-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+
+  .gallery-prev {
+    left: 10px;
+  }
+
+  .gallery-next {
+    right: 10px;
+  }
+
+  .project-description {
+    font-size: 11px;
+  }
+
+}
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-section {
+  padding: 120px 8%;
+  background:#241F2F;
+  color: #C1A0AC;
+}
+
+.section-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #AA4F60;
+  margin-bottom: 30px;
+}
+
+
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 70px;
+}
+
+
+.about-header h2 {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.85;
+  letter-spacing: 2px;
+}
+
+.about-header h2 span {
+  color: #AA4F60;
+}
+
+
+.about-intro {
+  max-width: 420px;
+  margin: 0;
+  font-family: "Space Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #C1A0AC;
+}
+
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 100px;
+  align-items: start;
+}
+
+
+.about-text {
+  max-width: 700px;
+}
+
+
+.about-text p {
+  margin: 0 0 25px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 2;
+
+  color: #F0D9E4;
+}
+
+
+.about-details {
+  border-top: 1px solid rgba(240, 217, 228, 0.2);
+}
+
+
+.about-detail {
+  display: flex;
+  gap: 25px;
+
+  padding: 25px 0;
+
+  border-bottom: 1px solid rgba(240, 217, 228, 0.2);
+}
+
+
+.detail-number {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  color: #AA4F60;
+}
+
+
+.about-detail h3 {
+  margin: 0 0 8px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+
+  color: #C1A0AC;
+}
+
+
+.about-detail p {
+  margin: 0;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.8rem;
+
+  color: #F0D9E4;
+}
+
+
+/* =========================
+   ABOUT HOVER
+========================= */
+
+.about-detail {
+  transition:
+    padding-left 0.3s ease,
+    background-color 0.3s ease;
+}
+
+
+.about-detail:hover {
+  padding-left: 15px;
+  background-color: rgba(170, 79, 96, 0.05);
+}
+
+
+/* =========================
+   ABOUT MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .about-section {
+    padding: 90px 6%;
+  }
+
+  .about-header {
+    display: block;
+    margin-bottom: 50px;
+  }
+
+  .about-header h2 {
+    margin-bottom: 30px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .about-intro {
+    max-width: 100%;
+  }
+
+}
+/* =========================
+   SKILLS SECTION
+========================= */
+
+.skills-section {
+  padding: 120px 8%;
+  background: #16131F;
+  color: #F0D9E4;
+}
+
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 40px;
+  margin-bottom: 70px;
+}
+
+
+.skills-header h2 {
+  margin: 0;
+
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.85;
+
+  letter-spacing: 2px;
+}
+
+
+.skills-header h2 span {
+  color: #AA4F60;
+}
+
+
+.skills-header p {
+  max-width: 420px;
+  margin: 0;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.85rem;
+  line-height: 1.8;
+
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   SKILLS GRID
+========================= */
+
+.skills-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+
+.skill-card {
+  position: relative;
+
+  min-height: 300px;
+  padding: 35px;
+
+  border: 1px solid rgba(240, 217, 228, 0.15);
+
+  background: #1D1926;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.skill-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #AA4F60;
+}
+
+
+/* =========================
+   CARD TOP
+========================= */
+
+.skill-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 55px;
+}
+
+
+.skill-number {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+
+  color: #AA4F60;
+}
+
+
+.skill-type {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.skill-card h3 {
+  margin: 0 0 15px;
+
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+
+.skill-card p {
+  max-width: 500px;
+  margin: 0 0 30px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1.8;
+
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   SKILL TAGS
+========================= */
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+
+.skill-tags span {
+  padding: 8px 12px;
+
+  border: 1px solid rgba(240, 217, 228, 0.18);
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+
+  color: #F0D9E4;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.skill-tags span:hover {
+  background-color: #AA4F60;
+  border-color: #AA4F60;
+}
+
+
+/* =========================
+   LEARNING CARD
+========================= */
+
+.learning-card {
+  border-style: dashed;
+}
+
+
+.learning-card .skill-number {
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   SKILLS MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .skills-section {
+    padding: 90px 6%;
+  }
+
+  .skills-header {
+    display: block;
+    margin-bottom: 50px;
+  }
+
+  .skills-header h2 {
+    margin-bottom: 30px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-card {
+    min-height: auto;
+    padding: 28px;
+  }
+
+  .skill-card-top {
+    margin-bottom: 40px;
+  }
+
+}
+/* =========================
+   SERVICES SECTION
+========================= */
+
+.services-section {
+  padding: 120px 8%;
+
+  background: #1D1926;
+  color: #F0D9E4;
+}
+
+
+/* =========================
+   SERVICES HEADER
+========================= */
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 50px;
+  margin-bottom: 75px;
+}
+
+
+.services-header h2 {
+  margin: 0;
+
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(4.5rem, 11vw, 9rem);
+  line-height: 0.8;
+
+  letter-spacing: 2px;
+}
+
+
+.services-header h2 span {
+  color: #AA4F60;
+}
+
+
+.services-header > p {
+  max-width: 420px;
+  margin: 0;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.85rem;
+  line-height: 1.9;
+
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   SERVICES GRID
+========================= */
+
+.services-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+
+/* =========================
+   SERVICE CARD
+========================= */
+
+.service-card {
+  position: relative;
+
+  min-height: 470px;
+  padding: 35px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid rgba(240, 217, 228, 0.14);
+
+  background: #16131F;
+  
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.service-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #AA4F60;
+}
+
+
+/* =========================
+   FEATURED CARD
+========================= */
+
+.featured-service {
+  background:
+    linear-gradient(
+      135deg,
+      #211923,
+      #16131F
+    );
+
+  border-color: rgba(170, 79, 96, 0.45);
+}
+
+
+.featured-service::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -70px;
+  bottom: -70px;
+
+  border-radius: 50%;
+
+  background: rgba(170, 79, 96, 0.08);
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   CARD TOP
+========================= */
+
+.service-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 65px;
+}
+
+
+.service-number {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+
+  color: #AA4F60;
+}
+
+
+.service-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.6rem;
+
+  letter-spacing: 2px;
+
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   SERVICE MAIN
+========================= */
+
+.service-main {
+  position: relative;
+  z-index: 2;
+}
+
+
+.service-main h3 {
+  margin: 0 0 20px;
+
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+
+  line-height: 0.85;
+
+  letter-spacing: 1px;
+}
+
+
+.service-main p {
+  max-width: 520px;
+  margin: 0;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1.9;
+
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   SERVICE BOTTOM
+========================= */
+
+.service-bottom {
+  margin-top: auto;
+
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+
+  gap: 30px;
+
+  padding-top: 40px;
+}
+
+
+/* =========================
+   PRICE
+========================= */
+
+.service-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  align-content: flex-start;
+  gap: 5px;
+}
+
+
+.service-price span {
+  width: 100%;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+
+  color: #C1A0AC;
+}
+
+
+.service-price strong {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+
+  color: #F0D9E4;
+}
+
+
+.service-price small {
+  font-family: "Space Mono", monospace;
+  font-size: 0.6rem;
+
+  color: #AA4F60;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.service-features {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+.service-features li {
+  position: relative;
+
+  margin-bottom: 10px;
+  padding-left: 17px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.62rem;
+
+  color: #C1A0AC;
+}
+
+
+.service-features li::before {
+  content: "→";
+
+  position: absolute;
+  left: 0;
+
+  color: #AA4F60;
+}
+
+
+/* =========================
+   SMALL SERVICE CARDS
+========================= */
+
+.small-service {
+  min-height: 300px;
+}
+
+
+.small-service .service-top {
+  margin-bottom: 45px;
+}
+
+
+.small-service .service-main h3 {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+}
+
+
+.compact-price {
+  margin-top: auto;
+}
+
+
+/* =========================
+   SERVICE NOTE
+========================= */
+
+.services-note {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-top: 35px;
+  padding: 25px 0;
+
+  border-top: 1px solid rgba(240, 217, 228, 0.12);
+}
+
+
+.services-note > span {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+
+  color: #AA4F60;
+}
+
+
+.services-note p {
+  max-width: 700px;
+  margin: 0;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  line-height: 1.8;
+
+  color: #C1A0AC;
+}
+
+
+/* =========================
+   SERVICES MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .services-section {
+    padding: 90px 6%;
+  }
+
+
+  .services-header {
+    display: block;
+
+    margin-bottom: 55px;
+  }
+
+
+  .services-header h2 {
+    margin-bottom: 35px;
+  }
+
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .service-card {
+    min-height: 430px;
+
+    padding: 28px;
+  }
+
+
+  .small-service {
+    min-height: 280px;
+  }
+
+
+  .service-bottom {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+
+  .service-top {
+    margin-bottom: 50px;
+  }
+
+
+  .service-main h3 {
+    font-size: 3.5rem;
+  }
+
+
+  .services-note {
+    align-items: flex-start;
+  }
+
+}
+
+
+/* ========================================
+   CONTACT
+   ======================================== */
+
+.contact-section {
+  padding: 80px 8% 60px;
+  background-color: #16131F;
+  color: #F0D9E4;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 70px;
+  align-items: center;
+
+  padding: 45px 0;
+
+  border-top: 1px solid rgba(240, 217, 228, 0.14);
+  border-bottom: 1px solid rgba(240, 217, 228, 0.14);
+}
+
+
+/* Small heading */
+
+.contact-eyebrow {
+  margin: 0 0 18px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+
+  color: #AA4F60;
+}
+
+
+/* Main heading */
+
+.contact-heading h2 {
+  margin: 0;
+
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  line-height: 0.85;
+  letter-spacing: 1px;
+}
+
+.contact-heading h2 span {
+  color: #AA4F60;
+}
+
+
+/* Contact text */
+
+.contact-info {
+  max-width: 420px;
+}
+
+.contact-description {
+  margin: 0 0 28px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.8;
+
+  color: #C1A0AC;
+}
+
+
+/* Email */
+
+.contact-email {
+  display: inline-block;
+
+  margin-bottom: 25px;
+
+  font-family: "Space Mono", monospace;
+  font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+
+  color: #F0D9E4;
+  text-decoration: none;
+
+  border-bottom: 1px solid #AA4F60;
+
+  padding-bottom: 6px;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.contact-email:hover {
+  color: #AA4F60;
+  border-color: #F0D9E4;
+}
+
+
+/* Social links */
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact-links a {
+  padding: 8px 11px;
+
+  border: 1px solid rgba(240, 217, 228, 0.15);
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+
+  color: #C1A0AC;
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.contact-links a:hover {
+  color: #F0D9E4;
+  background-color: #AA4F60;
+  border-color: #AA4F60;
+}
+
+
+/* CTA */
+
+.contact-cta {
+  display: flex;
+  justify-content: flex-end;
+
+  padding-top: 30px;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+
+  padding: 14px 19px;
+
+  background-color: #AA4F60;
+  color: #F0D9E4;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.contact-button span {
+  font-size: 1rem;
+}
+
+.contact-button:hover {
+  background-color: #7F3D4D;
+  transform: translateY(-3px);
+}
+
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.site-footer {
+  padding: 25px 8% 18px;
+
+  background-color: #1D1926;
+  color: #F0D9E4;
+}
+
+
+/* Main footer row */
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding-bottom: 22px;
+
+  border-bottom: 1px solid rgba(240, 217, 228, 0.12);
+}
+
+
+/* Logo */
+
+.footer-brand {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+
+  color: #F0D9E4;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.footer-brand:hover {
+  color: #AA4F60;
+}
+
+
+/* Tagline */
+
+.footer-tagline {
+  margin: 0;
+
+  text-align: center;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.52rem;
+
+  color: #C1A0AC;
+}
+
+
+/* Back to top */
+
+.back-to-top {
+  justify-self: end;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.52rem;
+
+  color: #C1A0AC;
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.back-to-top:hover {
+  color: #AA4F60;
+}
+
+
+/* Bottom copyright */
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding-top: 15px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.8px;
+
+  color: #7F6A76;
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+
+  .contact-section {
+    padding: 65px 6% 50px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    padding: 35px 0;
+  }
+
+  .contact-heading h2 {
+    font-size: clamp(3.5rem, 17vw, 5.5rem);
+  }
+
+  .contact-info {
+    max-width: 100%;
+  }
+
+  .contact-description {
+    font-size: 0.68rem;
+    line-height: 1.8;
+  }
+
+  .contact-cta {
+    justify-content: flex-start;
+
+    padding-top: 25px;
+  }
+
+  .contact-button {
+    width: 100%;
+
+    justify-content: space-between;
+
+    box-sizing: border-box;
+  }
+
+
+  /* Footer */
+
+  .site-footer {
+    padding: 25px 6% 18px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    gap: 14px;
+
+    padding-bottom: 20px;
+  }
+
+  .footer-brand {
+    font-size: 1.8rem;
+  }
+
+  .back-to-top {
+    justify-self: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 7px;
+  }
+}
